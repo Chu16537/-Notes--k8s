@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-service-d09
+spec:
+  type: NodePort
+  ports:
+  # 可以 curl 的port
+  - port: 3000
+  # minikube service hello-service --url 為拿到的port
+    nodePort: 30390
+    protocol: TCP
+    targetPort: 3000
+  selector:
+  # 需要pod的名稱
+    app: my-deployment-d09
+

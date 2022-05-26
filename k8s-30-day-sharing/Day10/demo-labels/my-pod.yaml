@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-d10
+  labels:
+    app: webserver
+    tier: backend
+  annotations:
+    version: latest
+    release_date: 2022/04/06
+    contact: email
+spec:
+  containers:
+  - name: pod-demo-d10
+    image: chu16537/docker-demo
+    ports:
+    - containerPort: 3000

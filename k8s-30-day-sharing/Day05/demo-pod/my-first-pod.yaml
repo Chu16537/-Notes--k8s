@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: my-pod-d05
+    labels:
+        app: webserver
+spec:
+    containers:
+        - name: pod-demo
+        # 必須跟自己上傳的 dockerhub專案名稱一樣
+          image: chu16537/docker-demo
+          ports:
+              - containerPort: 3000
+    #  如果使用本地docker image 記得加上
+    # imagePullPolicy: Never
+    # restartPolicy: Never

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-d12
+  labels:
+    app: webserver
+spec:
+  containers:
+  - name: demo-pod-d12
+    image: chu16537/docker-demo
+    ports:
+    - containerPort: 3000
+    env:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: demo-secret-from-yaml-d12
+          key: username
+    - name: SECRET_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: demo-secret-from-yaml-d12
+          key: password
