@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nameSpace-name
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quotas
+  namespace: nameSpace-name
+spec:
+  hard:
+  # 運算資源
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "1"
+    requests.memory: 10Gi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-quotas
+  namespace: nameSpace-name
+spec:
+  hard:
+  # 物件資源
+    services: "2"
+    services.loadbalancers: "1"
+    secrets: "1"
+    configmaps: "1"
+    replicationcontrollers: "10"
+

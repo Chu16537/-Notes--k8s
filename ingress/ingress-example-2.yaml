@@ -1,0 +1,27 @@
+# 讓不同 domain name 的請求對應到不同的 Service 物件
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: ingress-name
+spec:
+    rules:
+        - host: helloworld-v1.example.com
+          http:
+              paths:
+                  - pathType: Prefix
+                    path: /
+                    backend:
+                        service:
+                            name: hellworld-v1
+                            port:
+                                number: 80
+        - host: helloworld-v2.example.com
+          http:
+              paths:
+                  - pathType: Prefix
+                    path: /
+                    backend:
+                        service:
+                            name: hellworld-v2
+                            port:
+                                number: 80

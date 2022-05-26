@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: replication-name
+spec:
+    # pod 數量
+    replicas: 3
+    selector:
+     # 必須跟 template.metadata.labels.app 一樣
+        app: pod-name
+    # 設定 pod 資訊 
+    template:
+        metadata:
+            labels:
+            # 必須跟 selector.app 一樣
+                app: pod-name
+                version: v1
+        spec:
+            containers:
+                - name: container-name
+                  image: chu16537/docker-demo
+                  ports:
+                      - containerPort: 3000

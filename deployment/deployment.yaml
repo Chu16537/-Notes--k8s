@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for kubectl versions >= 1.9.0 use apps/v1
+kind: Deployment
+metadata:
+    # 創建時名稱
+    name: deployment-name
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: deployment-labels
+    template:
+        metadata:
+            labels:
+                app: deployment-labels
+        spec:
+            containers:
+                - name: pod-name
+                  image: chu16537/docker-demo:latest
+                  ports:
+                      - containerPort: 3000

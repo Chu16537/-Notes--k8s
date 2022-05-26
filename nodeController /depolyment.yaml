@@ -1,0 +1,19 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: nodeController-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodeController-pod
+  template:
+    metadata:
+      labels:
+        app: nodeController-pod
+    spec:
+      containers:
+      - name: my-pod
+        image: chu16537/docker-demo:latest
+        ports:
+        - containerPort: 3000

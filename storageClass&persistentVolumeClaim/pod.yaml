@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-name
+  labels:
+    app: apiserver
+    tier: backend
+spec:
+  containers:
+  - name: my-pod
+    image: chu16537/docker-demo
+    ports:
+    - containerPort: 3000
+    volumeMounts:
+    - name: my-pvc 
+      mountPath: "/tmp" #  container 中掛載的路徑
+  volumes:
+  - name: my-pvc # spec.containers.volumeMounts.name
+    persistentVolumeClaim:
+      claimName: myclaim # PersistentVolumeClaim 物件的名稱

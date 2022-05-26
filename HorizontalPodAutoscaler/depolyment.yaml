@@ -1,0 +1,22 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: horizontal-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: horizontal-pod
+  template:
+    metadata:
+      labels:
+        app: horizontal-pod
+    spec:
+      containers:
+      - name: horizontal-container
+        image: chu16537/docker-demo:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 200m

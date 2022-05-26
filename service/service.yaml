@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: service-name
+spec:
+    # NodePort || LoadBalancer
+    type: NodePort
+    ports:
+        # 對外的port(可以 curl)
+        - port: 3000
+          # minikube service service-name --url 拿到的port
+          nodePort: 30390
+          protocol: TCP
+          targetPort: 3000
+    selector:
+        # 必須跟 deployment spec.selector.matchLabels.app 一樣
+        app: deployment-labels

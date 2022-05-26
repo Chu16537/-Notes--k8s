@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    # 創建的 pod 名稱 必須都要小寫英文
+    name: pod-name
+    # 標籤 方便管理
+    labels:
+        app: webserver
+    # 自定義資訊 可隨意寫
+    annotations:
+        key1: "value1"
+        key2: "value2"
+spec:
+    # pod 可以跑多個 containers
+    containers:
+        # container 名稱  必須都要小寫英文
+        - name: container-name
+          # docker image name:tag名稱(REPOSITORY)
+          image: chu16537/docker-demo
+          ports:
+              #允許port可以讓外部資源存取的
+              - containerPort: 3000
+    #  如果使用本地docker image 記得加上
+    # imagePullPolicy: Never
+    # restartPolicy: Never
+
+    ## 如果 hardware 所有node 都沒有此標籤 只會卡在 Pending
+    # nodeSelector:
+    #     hardware: high-memory

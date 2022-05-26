@@ -1,0 +1,13 @@
+# ssl 開關
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-3
+spec:
+  tls:
+  - secretName: ssh-secret
+  backend:
+    service:
+      name: apiservice
+      port: 
+        number: 80

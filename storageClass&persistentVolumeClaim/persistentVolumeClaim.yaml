@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+    name: myclaim
+spec:
+    accessModes:
+        - ReadWriteOnce # 同時只可以掛載在同一個 Node 上提供讀寫功能。
+        # - ReadOnlyMany # 同時可以在多個 Node 上提供讀取功能
+        # - ReadWriteMany # 同時可以在多個 Node 上提供讀寫功能
+    resources:
+        requests:
+            # 儲存空間大小
+            storage: 8Gi
+    storageClassName: storageClass-name
